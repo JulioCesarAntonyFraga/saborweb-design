@@ -1,8 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import css from "./tokens.css.ts";
-import { DesignTokensPage } from './pages/DesignTokensPage.tsx';
+import css from "./tokens.css";
+import { DesignTokensPage } from './pages/DesignTokensPage';
 
 const style = document.createElement("style");
 style.textContent = css;
