@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import { tokensCSS } from "./tokensCSS";
+import { tokensCSS } from "./tokens/tokensCSS";
 import { DesignTokensPage } from './pages/DesignTokensPage';
 
 const style = document.createElement("style");
