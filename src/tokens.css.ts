@@ -14,6 +14,4 @@ function toCSSVariables(obj: Record<string, TokenValue>, prefix = "--"): string 
     .join("\n");
 }
 
-const tokensCSS = `:root {\n${toCSSVariables({ colors, typography })}\n}`;
-
-export default tokensCSS;
+export const tokensCSS = `:root {\n${toCSSVariables({ colors, typography })}\n}`;
