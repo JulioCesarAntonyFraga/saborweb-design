@@ -1,21 +1,19 @@
 import { colors } from "./tokens/colors";
 import { typography } from "./tokens/typography";
 
-function toCSSVariables(obj: Record<string, any>, prefix = "--"): string {
+type TokenValue = string | Record<string, any>;
+
+function toCSSVariables(obj: Record<string, TokenValue>, prefix = "--"): string {
   return Object.entries(obj)
     .map(([key, value]) => {
       if (typeof value === "object") {
-        return toCSSVariables(value, `${prefix}${key}-`);
+        return toCSSVariables(value as Record<string, TokenValue>, `${prefix}${key}-`);
       }
       return `${prefix}${key}: ${value};`;
     })
     .join("\n");
 }
 
-const css = `
-:root {
-${toCSSVariables({ colors, typography }, "--")}
-}
-`;
+const tokensCSS = `:root {\n${toCSSVariables({ colors, typography })}\n}`;
 
-export default css;
+export default tokensCSS;

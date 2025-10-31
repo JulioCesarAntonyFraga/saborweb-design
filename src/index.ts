@@ -1,3 +1,3 @@
 export * from "./tokens/colors";
 export * from "./tokens/typography";
-export * from "./tokens.css";
+export { default as tokensCSS } from "./tokens.css";
