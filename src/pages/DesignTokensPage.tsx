@@ -4,8 +4,8 @@ import { typography } from "../tokens/typography";
 
 const ColorBox = ({ name, value }: { name: string; value: string }) => {
   const handleCopy = () => {
-    navigator.clipboard.writeText(`var(--${name})`);
-    alert(`Copiado: var(--${name})`);
+    navigator.clipboard.writeText(`var(--colors-${name})`);
+    alert(`Copiado: var(--colors-${name})`);
   };
 
   return (
@@ -28,36 +28,48 @@ const ColorBox = ({ name, value }: { name: string; value: string }) => {
   );
 };
 
-const TypographyExample = ({
-  name,
-  style,
-  sample,
-}: {
+interface TypographyExampleProps {
   name: string;
+  tokenPath: string;
   style: React.CSSProperties;
   sample: string;
-}) => {
+}
+
+const TypographyExample = ({
+  name,
+  tokenPath,
+  style,
+  sample,
+}: TypographyExampleProps) => {
   const handleCopy = () => {
-    const tokenName = `typography-${name.toLowerCase().replace(/\s+/g, "-")}`;
-    navigator.clipboard.writeText(`var(--${tokenName})`);
-    alert(`Copiado: var(--${tokenName})`);
+    navigator.clipboard.writeText(`var(--${tokenPath})`);
+    alert(`Copiado: var(--${tokenPath})`);
   };
 
   return (
-    <div className="mb-4 flex items-center justify-between">
+    <div className="mb-6 flex items-start justify-between border-b border-gray-200 pb-4">
       <div>
-        <div className="mb-1 font-medium">{name}</div>
+        <div className="mb-2 font-semibold text-sm text-gray-600">{name}</div>
         <div style={style}>{sample}</div>
+
+        <div className="mt-2 text-xs text-gray-500 space-y-1">
+          {Object.entries(style).map(([key, value]) => (
+            <div key={key}>
+              <code>{key}:</code> {String(value)}
+            </div>
+          ))}
+        </div>
       </div>
       <button
         onClick={handleCopy}
-        className="ml-4 px-2 py-1 text-sm bg-gray-200 rounded hover:bg-gray-300 self-start"
+        className="ml-4 px-2 py-1 text-xs bg-gray-100 border rounded hover:bg-gray-200"
       >
-        Copiar
+        Copiar var
       </button>
     </div>
   );
 };
+
 
 export const DesignTokensPage = () => {
   const sampleText = "The quick brown fox jumps over the lazy dog";
@@ -81,39 +93,77 @@ export const DesignTokensPage = () => {
         ))}
       </section>
 
-      {/* Typography */}
       <section>
-        <h2 className="text-2xl font-semibold mb-4">Typography</h2>
+        <h2 className="text-2xl font-semibold mb-6">Typography</h2>
+
         {/* Headings */}
-        {typography.heading &&
-          Object.entries(typography.heading).map(([key, style]) => (
-            <TypographyExample
-              key={key}
-              name={`Heading ${key.toUpperCase()}`}
-              style={{
-                fontFamily: style.fontFamily,
-                fontSize: style.fontSize,
-                fontWeight: parseInt(style.fontWeight as string),
-                lineHeight: style.lineHeight,
-              }}
-              sample={sampleText}
-            />
-          ))}
+        {Object.entries(typography.heading).map(([key, style]) => (
+          <TypographyExample
+            key={key}
+            name={`Heading ${key.toUpperCase()}`}
+            tokenPath={`typography-heading-${key}`}
+            style={{
+              fontFamily: style.fontFamily,
+              fontSize: style.fontSize,
+              fontWeight: Number(style.fontWeight),
+              lineHeight: style.lineHeight,
+              letterSpacing: typography.letterSpacing.normal,
+            }}
+            sample={sampleText}
+          />
+        ))}
+
         {/* Body */}
-        {typography.body &&
-          Object.entries(typography.body).map(([key, style]) => (
+        {Object.entries(typography.body).map(([key, style]) => (
+          <TypographyExample
+            key={key}
+            name={`Body ${key}`}
+            tokenPath={`typography-body-${key}`}
+            style={{
+              fontFamily: style.fontFamily,
+              fontSize: style.fontSize,
+              lineHeight: style.lineHeight,
+              letterSpacing: typography.letterSpacing.normal,
+            }}
+            sample={sampleText}
+          />
+        ))}
+        {/* Font Family */}
+        <section className="mt-10">
+          <h2 className="text-2xl font-semibold mb-6">Font Families</h2>
+
+          {Object.entries(typography.fontFamily).map(([key, fontFamily]) => (
             <TypographyExample
               key={key}
-              name={`Body ${key}`}
+              name={`Font Family: ${key}`}
+              tokenPath={`typography-fontFamily-${key}`}
               style={{
-                fontFamily: style.fontFamily,
-                fontSize: style.fontSize,
-                lineHeight: style.lineHeight,
+                fontFamily,
+                fontSize: "1.25rem",
+                lineHeight: 1.4,
               }}
               sample={sampleText}
             />
           ))}
+        </section>
+        {/* Line Height */}
+        {Object.entries(typography.lineHeight).map(([key, lineHeight]) => (
+          <TypographyExample
+            key={key}
+            name={`Line Height ${key.toUpperCase()}`}
+            tokenPath={`typography-heading-${key}`}
+            style={{
+              fontFamily: typography.fontFamily.body,
+              fontSize: typography.fontSize.base,
+              fontWeight: Number(typography.fontWeight.regular),
+              lineHeight: lineHeight,
+              letterSpacing: typography.letterSpacing.normal,
+            }}
+            sample={sampleText}
+          />
+        ))}
       </section>
+
     </div>
   );
 };
