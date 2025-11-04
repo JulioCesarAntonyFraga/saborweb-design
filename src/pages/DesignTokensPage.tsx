@@ -5,7 +5,6 @@ import { typography } from "../tokens/typography";
 const ColorBox = ({ name, value }: { name: string; value: string }) => {
   const handleCopy = () => {
     navigator.clipboard.writeText(`var(--colors-${name})`);
-    alert(`Copiado: var(--colors-${name})`);
   };
 
   return (
@@ -43,7 +42,6 @@ const TypographyExample = ({
 }: TypographyExampleProps) => {
   const handleCopy = () => {
     navigator.clipboard.writeText(`var(--${tokenPath})`);
-    alert(`Copiado: var(--${tokenPath})`);
   };
 
   return (
