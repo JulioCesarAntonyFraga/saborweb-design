@@ -1,6 +1,6 @@
 import React from "react";
-import { colors } from "../tokens/colors";
-import { typography } from "../tokens/typography";
+import { colors } from "../../../src/tokens/colors";
+import { typography } from "../../../src/tokens/typography";
 
 const ColorBox = ({ name, value }: { name: string; value: string }) => {
   const handleCopy = () => {
