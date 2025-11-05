@@ -1,4 +1,3 @@
-import React from "react";
 import { colors } from "../../../src/tokens/colors";
 import { typography } from "../../../src/tokens/typography";
 import ColorBox from "../components/ColorBox/ColorBox";
