@@ -33,41 +33,4 @@ export const typography = {
     normal: "0",
     wide: "0.02em",
   },
-  heading: {
-    h1: {
-      fontFamily: "'Mozilla Headline', sans-serif",
-      fontSize: "3rem",
-      fontWeight: "700",
-      lineHeight: "1.2",
-    },
-    h2: {
-      fontFamily: "'Mozilla Headline', sans-serif",
-      fontSize: "2.25rem",
-      fontWeight: "600",
-      lineHeight: "1.25",
-    },
-    h3: {
-      fontFamily: "'Mozilla Headline', sans-serif",
-      fontSize: "1.875rem",
-      fontWeight: "600",
-      lineHeight: "1.3",
-    },
-  },
-  body: {
-    large: {
-      fontFamily: "'Google Sans', sans-serif",
-      fontSize: "1.125rem",
-      lineHeight: "1.6",
-    },
-    base: {
-      fontFamily: "'Google Sans', sans-serif",
-      fontSize: "1rem",
-      lineHeight: "1.5",
-    },
-    small: {
-      fontFamily: "'Google Sans', sans-serif",
-      fontSize: "0.875rem",
-      lineHeight: "1.4",
-    },
-  },
 };
