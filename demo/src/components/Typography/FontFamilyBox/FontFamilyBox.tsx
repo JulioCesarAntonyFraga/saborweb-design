@@ -20,7 +20,7 @@ export const FontFamilyBox = ({ name, fontFamily }: FontFamilyBoxProps) => {
   };
 
   return (
-    <div className="flex items-center justify-between p-4 border rounded-lg mb-3 bg-white shadow-sm hover:shadow-md transition-shadow">
+    <div className="flex items-center justify-between p-4 border rounded-lg mb-3 bg-[var(--colors-background-surface)] shadow-sm hover:shadow-md transition-shadow">
       {/* Preview da fonte */}
       <div className="flex-1 mr-4">
         <div className="text-sm text-gray-500 mb-1 font-medium">

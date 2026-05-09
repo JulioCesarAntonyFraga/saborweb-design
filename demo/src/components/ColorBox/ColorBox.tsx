@@ -21,7 +21,7 @@ const ColorBox = ({ name, value }: ColorBoxProps) => {
   };
 
   return (
-    <div className="flex items-center justify-between p-3 border rounded-lg mb-2 bg-white shadow-sm hover:shadow-md transition-shadow">
+    <div className="flex items-center justify-between p-3 border rounded-lg mb-2 bg-[var(--colors-background-surface)] shadow-sm hover:shadow-md transition-shadow">
       {/* Preview da cor */}
       <div
         style={{ backgroundColor: value }}
