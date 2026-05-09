@@ -90,6 +90,9 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  min-height: 2.5rem;
+  min-width: 3rem;
+  padding: 0.625rem 1rem;
   font-family: var(--typography-fontFamily-body);
   font-weight: var(--typography-fontWeight-semibold);
   letter-spacing: var(--typography-letterSpacing-normal);
@@ -115,16 +118,19 @@
 .sw-btn--sm {
   font-size: var(--typography-fontSize-sm);
   padding: 0.5rem 0.875rem;
+  min-height: 2rem;
 }
 
 .sw-btn--md {
   font-size: var(--typography-fontSize-base);
   padding: 0.625rem 1rem;
+  min-height: 2.5rem;
 }
 
 .sw-btn--lg {
   font-size: var(--typography-fontSize-lg);
   padding: 0.75rem 1.25rem;
+  min-height: 3rem;
 }
 
 .sw-btn--solid.sw-btn--primary {
@@ -241,6 +247,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  min-height: 2.5rem;
   font-family: var(--typography-fontFamily-body);
   font-weight: var(--typography-fontWeight-semibold);
   letter-spacing: var(--typography-letterSpacing-normal);
